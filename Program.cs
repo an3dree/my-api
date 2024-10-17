@@ -26,6 +26,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 
+Console.WriteLine($"Connection String: {connectionString}");
 
 app.Run();
 
