@@ -25,8 +25,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-
-Console.WriteLine($"Connection String: {connectionString}");
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
+//Console.WriteLine($"Connection String: {connectionString}");
 
 app.Run();
 
