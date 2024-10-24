@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace MyApi.Data
 {
     public class BlogUser
@@ -18,6 +20,8 @@ namespace MyApi.Data
         public string Title { get; set; }
         public string Content { get; set; }
         public int BlogUserId { get; set; }
-        public BlogUser BlogUser { get; set; }
+
+        [JsonIgnore]
+        public virtual BlogUser? BlogUser { get; set; }
     }
 }
